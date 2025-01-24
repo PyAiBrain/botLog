@@ -4,13 +4,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastAction = document.getElementById("last-action")
     const lastLogEntry = document.getElementById("last-log-entry")
   
-    // Sample log data (replace this with your actual log data)
-    fetch('./bot.log')
-      .then(response => response.text())
-      .then(data => {
-        const logData = data;
-        displayLog(logData)
-      });
+    function update() {
+      // Sample log data (replace this with your actual log data)
+      fetch('./bot.log')
+        .then(response => response.text())
+        .then(data => {
+          const logData = data;
+          displayLog(logData)
+        });
+      }
   
     // Function to parse and display log entries
     function displayLog(log) {
@@ -40,7 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
         lastAction.textContent = lastActionText
       }
       lastLogEntry.textContent = lines[lines.length - 1]
-    }
+    };
+    update()
   }
 )
   
