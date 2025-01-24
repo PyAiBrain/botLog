@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       logEntry.appendChild(dateSpan)
 
       const levelSpan = document.createElement("span")
-      levelSpan.classList.add(`log-type-${level.toLowerCase()}`)
+      levelSpan.classList.add(`log-type-${level}`)
       levelSpan.textContent = `${level} `
       logEntry.appendChild(levelSpan)
 
