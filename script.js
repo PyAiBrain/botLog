@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
           const logData = data;
           displayLog(logData)
-        }) #UPDATED
+        }) //UPDATED
       }
   
     // Function to parse and display log entries
