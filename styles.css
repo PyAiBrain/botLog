@@ -33,7 +33,7 @@ body {
   font-weight: bold;
 }
 
-.window-controls button {
+.window-controls span {
   margin-left: 10px;
   cursor: pointer;
   background: none;
@@ -138,5 +138,6 @@ button.refresh {
 
 .refresh {
   cursor: pointer;
+  margin-left: 20px;
 }
 
