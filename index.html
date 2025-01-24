@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows-style Log Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="window">
+        <div class="title-bar">
+            <div class="title">Log Viewer</div>
+            <div class="window-controls">
+                <span class="minimize">&#8212;</span>
+                <span class="maximize">&#9633;</span>
+                <span class="close">&#10005;</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="sidebar">
+                <div class="info-box">
+                    <h3>Last Reminder Sent</h3>
+                    <p id="last-reminder"></p>
+                </div>
+                <div class="info-box">
+                    <h3>Last Action Taken</h3>
+                    <p id="last-action"></p>
+                </div>
+                <div class="info-box">
+                    <h3>Last Log Entry</h3>
+                    <p id="last-log-entry"></p>
+                </div>
+            </div>
+            <div class="main-content">
+                <h2>Full Log</h2>
+                <div id="log-display"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
