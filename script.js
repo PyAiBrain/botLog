@@ -1,25 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const logDisplay = document.getElementById("log-display")
-    const lastReminder = document.getElementById("last-reminder")
-    const lastAction = document.getElementById("last-action")
-    const lastLogEntry = document.getElementById("last-log-entry")
-  
-    function update() {
-      // Sample log data (replace this with your actual log data)
-      fetch('./bot.log')
-        .then(response => response.text())
-        .then(data => {
-          const logData = data;
-          displayLog(logData)
-        }) //UPDATED
-      }
-  
-    // Function to parse and display log entries
-    function displayLog(log) {
-      const lines = log.split("\n")
-      let lastReminderText = ""
-      let lastActionText = ""
-  
+  const logDisplay = document.getElementById("log-display")
+  const lastReminder = document.getElementById("last-reminder")
+  const lastAction = document.getElementById("last-action")
+  const lastLogEntry = document.getElementById("last-log-entry")
+
+  function update() {
+    // Sample log data (replace this with your actual log data)
+    fetch("./bot.log")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok")
+        }
+        return response.text()
+      })
+      .then((data) => {
+        const logData = data
+        displayLog(logData)
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error)
+        logDisplay.textContent = "Error loading log data"
+      })
+  }
+
+  // Function to parse and display log entries
+  function displayLog(log) {
+    const lines = log.split("\n")
+    let lastReminderText = ""
+    let lastActionText = ""
+
+    logDisplay.innerHTML = "" // Clear existing log entries
+
     lines.forEach((line) => {
       const [date, time, level, bot, ...message] = line.split(/\s+/)
       const logEntry = document.createElement("div")
@@ -44,25 +55,25 @@ document.addEventListener("DOMContentLoaded", () => {
       messageSpan.classList.add("log-message")
       messageSpan.textContent = message.join(" ")
       logEntry.appendChild(messageSpan)
-  
-        if (line.includes("created a reminder")) {
-          lastActionText = `Reminder created: ${message.join(" ")}`
-        } else if (line.includes("Reminder sent")) {
-          lastReminderText = `${message.join(" ")}`
-        }
-      })
-  
-      // Update sidebar information
-      if (lastReminderText) {
-        lastReminder.textContent = lastReminderText
+
+      logDisplay.appendChild(logEntry)
+
+      if (line.includes("created a reminder")) {
+        lastActionText = `Reminder created: ${message.join(" ")}`
+      } else if (line.includes("Reminder sent")) {
+        lastReminderText = `${message.join(" ")}`
       }
-      if (lastActionText) {
-        lastAction.textContent = lastActionText
-      }
-      lastLogEntry.textContent = lines[lines.length - 1]
-    };
-    update()
+    })
+
+    // Update sidebar information
+    if (lastReminderText) {
+      lastReminder.textContent = lastReminderText
+    }
+    if (lastActionText) {
+      lastAction.textContent = lastActionText
+    }
+    lastLogEntry.textContent = lines[lines.length - 1]
   }
-)
-  
-  
+  update()
+})
+
