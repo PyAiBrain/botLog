@@ -102,12 +102,10 @@ body {
   }
   
  button.close {
- height: 100%;
  background-color: red;
  margin-left: 20px;
  }
 
  button.refresh {
-  height: 100%;
   background-color: #2d2d2d
  }
