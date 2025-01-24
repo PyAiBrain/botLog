@@ -33,7 +33,7 @@ body {
     font-weight: bold;
   }
   
-  .window-controls span {
+  .window-controls {
     margin-left: 10px;
     cursor: pointer;
   }
@@ -101,4 +101,12 @@ body {
     background-color: #c0392b;
   }
   
-  
+ button.close {
+ height: 100%;
+ color: red;
+ }
+
+ button.refresh {
+  height: 100%;
+  color: #1e1e1e
+ }
