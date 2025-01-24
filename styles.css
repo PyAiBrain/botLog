@@ -103,19 +103,19 @@ body {
   color: #a0a0a0;
 }
 
-.log-type-info {
+.log-type-INFO {
   color: #87cefa;
 }
 
-.log-type-warning {
+.log-type-WARNING {
   color: #ffa500;
 }
 
-.log-type-error {
+.log-type-ERROR {
   color: #ff0000;
 }
 
-.log-type-critical {
+.log-type-CRITICAL {
   color: #8b0000;
 }
 
