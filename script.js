@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(response => response.text())
       .then(data => {
         const logData = data;
+        displayLog(logData)
       });
   
     // Function to parse and display log entries
@@ -40,9 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       lastLogEntry.textContent = lines[lines.length - 1]
     }
-  
-    // Display the log
-    displayLog(logData)
-  })
+  }
+)
   
   
