@@ -20,12 +20,30 @@ document.addEventListener("DOMContentLoaded", () => {
       let lastReminderText = ""
       let lastActionText = ""
   
-      lines.forEach((line) => {
-        const [timestamp, level, , ...message] = line.split(/\s+/)
-        const logEntry = document.createElement("div")
-        logEntry.classList.add("log-entry", level.toLowerCase())
-        logEntry.textContent = line
-        logDisplay.appendChild(logEntry)
+    lines.forEach((line) => {
+      const [date, time, level, bot, ...message] = line.split(/\s+/)
+      const logEntry = document.createElement("div")
+      logEntry.classList.add("log-entry")
+
+      const dateSpan = document.createElement("span")
+      dateSpan.classList.add("log-date")
+      dateSpan.textContent = `${date} ${time} `
+      logEntry.appendChild(dateSpan)
+
+      const levelSpan = document.createElement("span")
+      levelSpan.classList.add(`log-type-${level.toLowerCase()}`)
+      levelSpan.textContent = `${level} `
+      logEntry.appendChild(levelSpan)
+
+      const botSpan = document.createElement("span")
+      botSpan.classList.add("log-bot")
+      botSpan.textContent = `${bot} `
+      logEntry.appendChild(botSpan)
+
+      const messageSpan = document.createElement("span")
+      messageSpan.classList.add("log-message")
+      messageSpan.textContent = message.join(" ")
+      logEntry.appendChild(messageSpan)
   
         if (line.includes("created a reminder")) {
           lastActionText = `Reminder created: ${message.join(" ")}`
